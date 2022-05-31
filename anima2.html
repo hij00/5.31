@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ani2</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box_bg{
+            width: 700px;
+            height: 500px;
+            background-color: lightgray;
+            display: flex;
+            background-image: url(img/bu_map.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            overflow: hidden;
+        }
+        .box{
+            width: 70px;
+            height: 70px;
+            font-size: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: gold;
+        }
+        /* .box:nth-child(1){
+            animation-name: move_1;
+            animation-duration: 2s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+        }
+        .box:nth-child(2){
+            animation-name: move_2;
+            animation-duration: 1.5s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+        }
+        .box:nth-child(3){
+            animation-name: move_3;
+            animation-duration: 1s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+        } */
+        @keyframes move_1 {
+            0%{
+                transform: translate(-10px,400px);
+            }
+            100%{
+                transform: translate(100vw, 400px);
+            }
+
+        }
+        @keyframes move_2 {
+            0%{
+                transform: translate(-10px,400px);
+            }
+            50%{
+                transform: translate(100vw, 0);
+            }
+            100%{
+                transform: translate(100vw, -550px);
+            }
+        }
+        @keyframes move_3 {
+            0%{
+                transform: translate(-10px,0);
+            }
+            100%{
+                transform: translate(100vw, 0);
+            }
+        }
+        .text{
+            display: none;
+            width: 700px;
+            height: 500px;
+            text-align: center;
+            padding: 100px 0;
+            box-sizing: border-box;
+            line-height: 100px;
+            background-color: gray;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* opacity: 0; */
+        }
+        /* ============================= */
+        .on{
+            display: none;
+        }
+        .close{
+            display: flex;
+            /* opacity: 1; */
+        }
+    </style>
+
+</head>
+<body>
+    <div class="box_bg">
+        
+        <div class="box boxEl">1</div>
+        <div class="box boxEl">2</div>
+        <div class="box boxEl">3</div>
+        <div class="text">
+            <h1>Try Again?</h1>
+            <button>Yes</button>
+            <button>No</button>
+        </div>
+    </div>
+    
+
+    <script>
+        (function(){
+            const boxWrap = document.querySelector('.box_bg')
+            const popUp = document.querySelector('.text')
+            
+            const handleClick = (e) => {
+                if(e.target.classList.contains('boxEl')){
+                    e.target.classList.add('on')
+                }else{
+                    e.target.classList.toggle('close')
+                }
+                // e.target.classList.add('on')
+            }
+            
+            boxWrap.addEventListener('click', handleClick)     
+
+        })()
+    </script>
+</body>
+</html>
